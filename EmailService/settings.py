@@ -145,8 +145,8 @@ SENDGRID_PASSWORD = os.environ.get("SENDGRID_PASSWORD")
 # )
 
 # EMAIL_FILE_PATH = email_config["EMAIL_FILE_PATH"]
-EMAIL_HOST_USER = 'dhthang1998@gmail.com'
-EMAIL_HOST_PASSWORD = 'Muangayxua@123'
+EMAIL_HOST_USER = SENDGRID_USERNAME
+EMAIL_HOST_PASSWORD = SENDGRID_PASSWORD
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
