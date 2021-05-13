@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     url(r'^api/notifications/$', views.sendTotification, name="Notification"),
     url(r'^api/confirm-order/$', views.confimOrder, name="Confirm Order"),
+    url(r'^api/test-email/$', views.send, name="Confirm Order"),
     url(r'^async/$', views.asyncF, name="Async"),
     url(r'^sync/$', views.syncF, name="Sync"),
 ]

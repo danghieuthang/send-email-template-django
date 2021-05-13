@@ -4,13 +4,18 @@ from core.utils import getVariables
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .emails import send_confirm_order, send_notification_email, test
+from .emails import send_confirm_order, send_notification_email, test, test_send
 import asyncio
 import time
 
 @api_view(["POST"])
 def sendTotification(request):
     send_notification_email()
+    return Response(status=200)
+
+@api_view(["GET"])
+def send(request):
+    test_send(request.GET["email"])
     return Response(status=200)
 
 @api_view(["POST"])
