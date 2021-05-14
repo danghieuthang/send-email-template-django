@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.sites",
     'rest_framework',
+    "django_prices",
     'confirms',
 ]
 
@@ -58,18 +60,27 @@ ROOT_URLCONF = 'core.urls'
 
 PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
 
+loaders = [
+    "django.template.loaders.filesystem.Loader",
+    "django.template.loaders.app_directories.Loader",
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(PROJECT_ROOT, "templates")],
-        'APP_DIRS': True,
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.static",
             ],
+            "loaders": loaders,
+            "debug": DEBUG,
+            "string_if_invalid": '<< MISSING VARIABLE "%s" >>' if DEBUG else "",
         },
     },
 ]
@@ -136,6 +147,7 @@ TEMPLATED_EMAIL_BACKEND = TemplateBackend
 
 SENDGRID_USERNAME = os.environ.get("SENDGRID_USERNAME")
 SENDGRID_PASSWORD = os.environ.get("SENDGRID_PASSWORD")
+DEFAULT_CURRENCY = os.environ.get("DEFAULT_CURRENCY")
 # if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
 #     EMAIL_URL = "smtp://%s:%s@smtp.sendgrid.net:587/?tls=True" % (
 #         SENDGRID_USERNAME,

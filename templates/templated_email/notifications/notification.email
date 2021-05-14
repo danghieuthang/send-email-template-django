@@ -10,3 +10,7 @@
   Thanks, you rock!
 {% include 'templated_email/shared/_footer.email'%}
 {% endblock %}
+
+{% block html %}
+  <h1 style="color: red">This is html </h1>
+{% endblock %}

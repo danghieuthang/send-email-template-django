@@ -1,4 +1,5 @@
 from asyncio.tasks import Task
+import json
 from confirms.models import Order
 from core.utils import getVariables
 from django.shortcuts import render
@@ -21,8 +22,9 @@ def send(request):
 @api_view(["POST"])
 def confimOrder(request):
     order = getVariables(request)
-    orderU = Order(**order)
-    send_confirm_order(orderU)
+    send_confirm_order(order)
+    
+    
 @api_view(["GET"])
 async def asyncF(request):
     start = time.time()

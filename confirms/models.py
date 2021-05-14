@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List
 from uuid import UUID
-
+from rest_framework import serializers
 
 class Currency(Enum):
     VND = "VND"
@@ -14,7 +14,6 @@ class Gross:
     def __init__(self, amount: float, currency: Currency) -> None:
         self.amount = amount
         self.currency = currency
-
 
 class Price:
     currency: Currency
